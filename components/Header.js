@@ -3,7 +3,7 @@ import { HeartIcon, HomeIcon, MenuIcon, PaperAirplaneIcon, PlusCircleIcon, Searc
 
 export default function Header() {
     return (
-        <div className="shadow-sm border-b bg-white sticky top-0">
+        <div className="shadow-sm border-b bg-white sticky top-0 z-10">
 
             <div className="flex justify-between max-w-6xl mx-5 xl:mx-auto">
 

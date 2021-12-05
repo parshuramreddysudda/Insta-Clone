@@ -12,7 +12,6 @@ function Stories() {
             ...faker.helpers.contextualCard(),
             id: i,
         }))
-        console.log(suggestions)
         setSuggestions(suggestions)
     }, [])
 

@@ -6,9 +6,9 @@ export default function Post({ id, username, caption, img, userimg }) {
             <div className="bg-white my-7 border rounded-sm">
 
                 {/* Header */}
-                <div className="flex flex-1 items-center p-5 ">
+                <div className="flex flex-1 items-center p-3 ">
                     <img
-                        className="rounded-full h-12 w-12 object-contain p-1 mr-3"
+                        className="rounded-full h-12 w-12 object-cover p-1 mr-3"
                         src={img} />
 
                     <p className=" flex-1 font-bold">
