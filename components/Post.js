@@ -50,7 +50,6 @@ export default function Post({ id, username, caption, img, userImg }) {
 
 
     const commentToSend = async (e) => {
-        console.log("Called")
         e.preventDefault();
         const commentToSend = comment;
         setComments('');
