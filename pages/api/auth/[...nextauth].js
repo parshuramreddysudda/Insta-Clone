@@ -7,8 +7,18 @@ export default NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+      checks: "both"
     }),
   ],
+
+  secret: process.env.SECRET,
+
+  session: {
+    strategy: 'jwt'
+  },
+  jwt: {
+    secret: process.env.SECRET,
+  },
 
 
   pages: {
@@ -21,6 +31,7 @@ export default NextAuth({
 
   // Callbacks are asynchronous functions you can use to control what happens
   // when an action is performed.
+
   callbacks: {
 
     async session({ session, token, user }) {
@@ -35,32 +46,4 @@ export default NextAuth({
     // async session({ session, token, user }) { return session },
     // async jwt({ token, user, account, profile, isNewUser }) { return token }
   },
-
-  // Events are useful for logging
-  // https://next-auth.js.org/configuration/events
-  events: {},
-
-  // You can set the theme to 'light', 'dark' or use 'auto' to default to the
-  // whatever prefers-color-scheme is set to in the browser. Default is 'auto'
-  theme: {
-    colorScheme: "light",
-  },
-  secret: process.env.SECRET,
-
-  session: {
-    strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 days
-
-    updateAge: 24 * 60 * 60, // 24 hours
-  },
-
-  jwt: {
-
-    secret: process.env.SECRET,
-
-    encode: async ({ secret, token, maxAge }) => { },
-    decode: async ({ secret, token, maxAge }) => { },
-  },
-  // Enable debug messages in the console if you are having problems
-  debug: false,
 })
