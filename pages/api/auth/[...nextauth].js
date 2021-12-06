@@ -23,12 +23,12 @@ export default NextAuth({
   // when an action is performed.
   callbacks: {
 
-    async session({session,token,user}){
-      session.user.username=session.user.name
-      .split(" ")
-      .join("")
-      .toLocaleLowerCase();
-      session.user.uid=token.sub;
+    async session({ session, token, user }) {
+      session.user.username = session.user.name
+        .split(" ")
+        .join("")
+        .toLocaleLowerCase();
+      session.user.uid = token.sub;
       return session;
     },
     // async redirect({ url, baseUrl }) { return baseUrl },
@@ -45,7 +45,22 @@ export default NextAuth({
   theme: {
     colorScheme: "light",
   },
+  secret: process.env.SECRET,
 
+  session: {
+    strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+
+    updateAge: 24 * 60 * 60, // 24 hours
+  },
+
+  jwt: {
+
+    secret: process.env.SECRET,
+
+    encode: async ({ secret, token, maxAge }) => { },
+    decode: async ({ secret, token, maxAge }) => { },
+  },
   // Enable debug messages in the console if you are having problems
   debug: false,
 })
