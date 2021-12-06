@@ -10,14 +10,14 @@ const posts=[
         caption:"Code like dying tomorrow"
     },
     {
-        id:'123',
+        id:'124563',
         username:"Parshuram",
         userImg:"https://avatars.githubusercontent.com/u/28673434?v=4",
         img:'https://avatars.githubusercontent.com/u/28673434?v=4',
         caption:"Code like dying tomorrow"
     },
     {
-        id:'123',
+        id:'1245756783',
         username:"Parshuram",
         userImg:"https://avatars.githubusercontent.com/u/28673434?v=4",
         img:'https://avatars.githubusercontent.com/u/28673434?v=4',

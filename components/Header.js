@@ -1,7 +1,15 @@
 import Image from 'next/image'
 import { HeartIcon, HomeIcon, MenuIcon, PaperAirplaneIcon, PlusCircleIcon, SearchIcon, UserGroupIcon } from '@heroicons/react/outline'
+import { signIn, signOut, useSession } from "next-auth/react"
 
 export default function Header() {
+
+    const { data: session, status } = useSession()
+
+
+    console.log(session)
+
+
     return (
         <div className="shadow-sm border-b bg-white sticky top-0 z-10">
 
