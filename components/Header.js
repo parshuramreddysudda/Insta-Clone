@@ -1,13 +1,16 @@
 import Image from 'next/image'
 import { HeartIcon, HomeIcon, MenuIcon, PaperAirplaneIcon, PlusCircleIcon, SearchIcon, UserGroupIcon } from '@heroicons/react/outline'
 import { signIn, signOut, useSession } from "next-auth/react"
+import { image } from 'faker'
+import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../atoms/modalAtom';
 
 export default function Header() {
 
-    const { data: session, status } = useSession()
-
-
-    console.log(session)
+    const { data: session, status } = useSession();
+    const router = useRouter();
+    const [open, setOpen] = useRecoilState(modalState);
 
 
     return (
@@ -16,14 +19,14 @@ export default function Header() {
             <div className="flex justify-between max-w-6xl mx-5 xl:mx-auto">
 
                 {/* Left */}
-                <div className="relative w-24 hidden lg:inline-grid cursor-pointer">
+                <div onClick={() => router.push('/')} className="relative w-24 hidden lg:inline-grid cursor-pointer">
                     <Image
                         src="https://links.papareact.com/ocw"
                         layout="fill"
-                        objectFit="contain"
+                        objectFit="contain "
                     />
                 </div>
-                <div className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer">
+                <div onClick={() => router.push('/')} className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer">
                     <Image
                         src="https://links.papareact.com/jjm"
                         layout="fill"
@@ -45,19 +48,24 @@ export default function Header() {
                 {/* Right */}
 
                 <div className="flex items-center justify-end space-x-4">
-                    <HomeIcon className="navBtn" />
+                    <HomeIcon onClick={() => router.push('/')} className="navBtn" />
                     <MenuIcon className="h-6 w-10 md:hidden cursor-pointer " />
-                    <div className="relative navBtn">
-                        <PaperAirplaneIcon className="navBtn rotate-45" />
-                        <div className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full 
+                    {session ? (
+                        <>
+                            <div className="relative navBtn">
+                                <PaperAirplaneIcon className="navBtn rotate-45" />
+                                <div className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full 
                         flex animate-pulse items-center justify-center text-white"
-                        >3</div>
-                    </div>
-                    <PlusCircleIcon className="navBtn" />
-                    <UserGroupIcon className="navBtn" />
-                    <HeartIcon className="navBtn" />
-                    <img src="https://miro.medium.com/fit/c/262/262/1*QBkKw8hN85LzwVOS7mfSNg.jpeg" alt="" className="h-10 rounded-full cursor-pointer" />
-                </div>
+                                >3</div>
+                            </div>
+                            <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn" />
+                            <UserGroupIcon className="navBtn" />
+                            <HeartIcon className="navBtn" />
+                            <img onClick={signOut} src={session.user?.image} alt="" className="h-10 w-10 rounded-full cursor-pointer" />
+                        </>
+                    ) : (
+                        <button onClick={signIn}>Sign in</button>
+                    )}      </div>
             </div>
         </div>
     )

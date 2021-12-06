@@ -22,6 +22,5 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore();
 
 const storage = getStorage();
-const analytics = getAnalytics(app);
 
 export { app, db, storage };

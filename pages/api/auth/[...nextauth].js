@@ -22,7 +22,15 @@ export default NextAuth({
   // Callbacks are asynchronous functions you can use to control what happens
   // when an action is performed.
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) { return true },
+
+    async session({session,token,user}){
+      session.user.username=session.user.name
+      .split(" ")
+      .join("")
+      .toLocaleLowerCase();
+      session.user.uid=token.sub;
+      return session;
+    },
     // async redirect({ url, baseUrl }) { return baseUrl },
     // async session({ session, token, user }) { return session },
     // async jwt({ token, user, account, profile, isNewUser }) { return token }
