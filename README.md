@@ -2,4 +2,4 @@
 
 ## ReactJs, NextJs, Recoil Js, Tailwind CSS
 
-![image](https://user-images.githubusercontent.com/28673434/146792744-c8631954-fe4c-4c9d-8338-6bcf79f48f8c.png)
+![image](https://user-images.githubusercontent.com/28673434/146792812-f9dd3454-471b-4a23-ae7a-1f165d969725.png)
