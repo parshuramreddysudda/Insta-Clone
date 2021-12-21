@@ -7,7 +7,7 @@ function signIn({ providers }) {
     return (
         <>
             <Header />
-            <div className=" flex flex-col items-center justify-center min-h-screen py2 -mt-56 px-14  text-center" >
+            <div className=" flex flex-col items-center justify-center min-h-screen py2 px-14  text-center" >
                 <img src="https://links.papareact.com/ocw" alt="" className=" w-80" />
                 <p className="font-xs italic">
                     This is not the REAl instagram, it is clone of Instagram created for educational purposes.
